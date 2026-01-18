@@ -1,0 +1,61 @@
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  product-service:
+    image: ahmedboudouh/bestbuy-product-service:latest
+    container_name: product-service
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/bestbuy
+      - PORT=4000
+    depends_on:
+      - mongo
+
+  order-service:
+    image: ahmedboudouh/bestbuy-order-service:latest
+    container_name: order-service
+    ports:
+      - "4001:4001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/bestbuy
+      - PORT=4001
+      - SERVICE_BUS_CONNECTION_STRING=${SERVICE_BUS_CONNECTION_STRING}
+      - SERVICE_BUS_QUEUE_NAME=orders-to-prepare
+    depends_on:
+      - mongo
+
+  store-front:
+    image: ahmedboudouh/bestbuy-store-front:latest
+    container_name: store-front
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - PRODUCT_API_BASE=http://product-service:4000/api/products
+      - ORDER_API_BASE=http://order-service:4001/api/orders
+    depends_on:
+      - mongo
+      - product-service
+      - order-service
+
+  store-admin:
+    image: ahmedboudouh/bestbuy-store-admin:latest
+    container_name: store-admin
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/bestbuy
+      - PORT=3001
+    depends_on:
+      - mongo
+      - order-service
+
+volumes:
+  mongo-data:

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: bestbuy
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bestbuy-config
+  namespace: bestbuy
+data:
+  MONGO_URI: "mongodb://mongo:27017/bestbuy"
+  SERVICE_BUS_QUEUE_NAME: "orders-to-prepare"
+
+  PRODUCT_SERVICE_PORT: "4000"
+  ORDER_SERVICE_PORT: "4001"
+  STORE_FRONT_PORT: "3000"
+  STORE_ADMIN_PORT: "3001"
+  PRODUCT_API_BASE: "http://product-service:4000/api/products"
+  ORDER_API_BASE: "http://order-service:4001/api/orders"
+  PRODUCT_API_URL: "http://product-service:4000/api/products"
+  ORDER_API_URL: "http://order-service:4001/api/orders"
