@@ -220,10 +220,10 @@ To deploy a new version:
 
 | Service | Repository URL |
 | --- | --- |
-| Store-Front | <https://github.com/Ahmedbooudouh/bestbuy-store-front-service.git> |
-| Store-Admin | <https://github.com/Ahmedbooudouh/bestby-store-admin.git> |
-| Order-Service | <https://github.com/Ahmedbooudouh/bestby-order-service.git> |
-| Product-Service | <https://github.com/Ahmedbooudouh/bestbuy-product-service.git> |
+| Store-Front | <https://github.com/AhmedBoudouh/my-projects/tree/main/BestBuy-Cloud-Native-Demo-Application/CST-8915-Final-project/bestbuy-services/bestbuy-store-front-service> |
+| Store-Admin | <https://github.com/AhmedBoudouh/my-projects/tree/main/BestBuy-Cloud-Native-Demo-Application/CST-8915-Final-project/bestbuy-services/bestby-store-admin> |
+| Order-Service | <https://github.com/AhmedBoudouh/my-projects/tree/main/BestBuy-Cloud-Native-Demo-Application/CST-8915-Final-project/bestbuy-services/bestby-order-service> |
+| Product-Service | <https://github.com/AhmedBoudouh/my-projects/tree/main/BestBuy-Cloud-Native-Demo-Application/CST-8915-Final-project/bestbuy-services/bestbuy-product-service> |
 
 * * * * *
 
