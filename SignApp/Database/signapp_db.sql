@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS signapp_db;
+USE signapp_db;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL, 
+    verification_token VARCHAR(255), 
+    verified BOOLEAN DEFAULT FALSE, 
+    token_expiry TIMESTAMP NULL, 
+    reset_token VARCHAR(255), 
+    reset_token_expiry TIMESTAMP NULL, 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+    last_login TIMESTAMP NULL
+);
